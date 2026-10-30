@@ -1,21 +1,4 @@
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-L7856P3VNT');
-</script><!DOCTYPE html>
-
-
-
-<!-- Ultimate Game Stash file--> 
-<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
-
-
-<!-- credits to crunch arcade for putting this into a single file html -->
-<!-- heads up btw, a few special stages or maybe its js one do have issues and maybe a boss crashes but i didnt recompile this one so i wouldnt know -->
-
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
     <meta charset="utf-8" />
@@ -25,11 +8,15 @@
     <meta name="theme-color" content="#0752c7" />
     <meta name="description" content="Play Sonic CD in your browser, with touchscreen controls." />
     <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="icon" href="./soniccd.webp?v=2" type="image/webp" />
     <link rel="apple-touch-icon" href="./soniccd.webp?v=2" />
     <title>Sonic CD</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        :root {
+            --ui-font: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -38,7 +25,7 @@
             width: 100%;
             overflow: hidden;
             background: #000;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--ui-font);
             text-align: center;
         }
 
@@ -69,14 +56,22 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: #000 url('https://cdn.jsdelivr.net/gh/UGBONTOP/ugs-soniccd@main/image_2026-02-28_165116299.png') no-repeat center center;
-            background-size: cover;
+            background:
+                linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.72)),
+                radial-gradient(circle at 50% 30%, rgba(32,112,255,0.4), rgba(0,0,0,0.3) 38%, rgba(0,0,0,0.7) 72%),
+                #02070f;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 1000;
             transition: opacity 0.4s ease;
+        }
+
+        @media (prefers-reduced-data: reduce) {
+            #loading-screen {
+                background: #02070f;
+            }
         }
 
         #loading-screen.fade-out {
@@ -207,7 +202,7 @@
             backdrop-filter: blur(4px);
             transition: all 0.2s;
             min-width: 130px;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--ui-font);
         }
         .game-btn:hover {
             background: rgba(0,0,0,0.8);
@@ -245,7 +240,7 @@
             border-radius: 15px;
             background: rgba(18, 35, 75, .68);
             color: #fff;
-            font: 900 clamp(18px, 4vw, 27px)/1 'Inter', sans-serif;
+            font: 900 clamp(18px, 4vw, 27px)/1 var(--ui-font);
             text-shadow: 0 2px 3px #000;
             box-shadow: 0 3px 0 rgba(0,0,0,.5), inset 0 0 12px rgba(80,160,255,.25);
             min-width: 42px;
@@ -304,7 +299,7 @@
         <div class="loading-content">
             <div class="loading-header">
                 <div class="title-group">
-                    <img src="https://cdn.jsdelivr.net/gh/UGBONTOP/ugs-soniccd@main/image_2026-02-28_164525280.png" class="mini-favicon" alt="icon">
+                    <img src="./soniccd.webp?v=2" class="mini-favicon" alt="icon">
                     <div class="loading-title">Sonic CD (html by crunch arcade)</div>
                 </div>
                 <div class="loading-mb" id="mb-text">0.0MB of 75.0MB</div>
@@ -350,6 +345,23 @@
 
     <div id="fpsInfo">detecting refresh rate...</div>
     <textarea id="output" rows="8"></textarea>
+
+    <script type="text/javascript">
+        // Load analytics after the page is interactive so it doesn't delay the game shell.
+        window.addEventListener('load', function() {
+            var existing = document.querySelector('script[data-analytics-loader="true"]');
+            if (existing) return;
+            var ga = document.createElement('script');
+            ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT';
+            ga.async = true;
+            ga.setAttribute('data-analytics-loader', 'true');
+            document.head.appendChild(ga);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-L7856P3VNT');
+        });
+    </script>
 
     <script type="text/javascript">
         const $ = id => document.getElementById(id);
@@ -713,65 +725,65 @@
     })();
     </script>
 
-    <script async type="text/javascript" src="https://cdn.jsdelivr.net/gh/UGBONTOP/ugs-soniccd@main/js1/index.js"></script>
-
-
-<style>
-#touchStartEnter{min-width:68px;min-height:58px;border:2px solid rgba(255,255,255,.85);border-radius:16px;background:linear-gradient(180deg,#168bff,#0752c7);color:#fff;font:900 13px/1.1 Arial,sans-serif;letter-spacing:.5px;text-shadow:0 1px 2px #003;box-shadow:0 4px 0 #063b86,0 0 14px #168bff66;touch-action:none;user-select:none;-webkit-user-select:none}
-#touchStartEnter:active{transform:translateY(3px);box-shadow:0 1px 0 #063b86,0 0 18px #168bff99}
-#touchStartEnter:focus-visible{outline:3px solid #fff;outline-offset:3px}
-</style>
-<script>
-(function(){
-  function addStartButton(){
-    var controls=document.getElementById('touchControls');
-    if(!controls || document.getElementById('touchStartEnter')) return;
-    var jumpButton=controls.querySelector('[data-key="x"]');
-    var cluster=jumpButton ? jumpButton.parentElement : null;
-    if(!cluster){cluster=document.createElement('div');cluster.className='touch-cluster';controls.appendChild(cluster);}
-    cluster.style.display='flex';
-    cluster.style.flexDirection='column';
-    cluster.style.alignItems='center';
-    cluster.style.justifyContent='center';
-    cluster.style.marginLeft='auto';
-    cluster.style.gap='12px';
-    cluster.style.padding='4px';
-    var btn=document.createElement('button');
-    btn.id='touchStartEnter';
-    btn.type='button';
-    btn.textContent='START';
-    btn.setAttribute('aria-label','Start or pause (Enter)');
-    btn.title='Start / Enter';
-    cluster.appendChild(btn);
-    var held=false;
-    function send(type){
-      var canvas=document.querySelector('canvas');
-      var target=canvas || document.activeElement || document;
-      var event;
-      try {
-        event=new KeyboardEvent(type,{key:'Enter',code:'Enter',keyCode:13,which:13,bubbles:true,cancelable:true});
-      } catch(e) {
-        event=document.createEvent('Event'); event.initEvent(type,true,true);
-        Object.defineProperty(event,'keyCode',{get:function(){return 13;}});
-        Object.defineProperty(event,'which',{get:function(){return 13;}});
+    <script>
+    (function(){
+      function addStartButton(){
+        var controls=document.getElementById('touchControls');
+        if(!controls || document.getElementById('touchStartEnter')) return;
+        var jumpButton=controls.querySelector('[data-key="x"]');
+        var cluster=jumpButton ? jumpButton.parentElement : null;
+        if(!cluster){cluster=document.createElement('div');cluster.className='touch-cluster';controls.appendChild(cluster);}
+        cluster.style.display='flex';
+        cluster.style.flexDirection='column';
+        cluster.style.alignItems='center';
+        cluster.style.justifyContent='center';
+        cluster.style.marginLeft='auto';
+        cluster.style.gap='12px';
+        cluster.style.padding='4px';
+        var btn=document.createElement('button');
+        btn.id='touchStartEnter';
+        btn.type='button';
+        btn.textContent='START';
+        btn.setAttribute('aria-label','Start or pause (Enter)');
+        btn.title='Start / Enter';
+        cluster.appendChild(btn);
+        var held=false;
+        function send(type){
+          var canvas=document.querySelector('canvas');
+          var target=canvas || document.activeElement || document;
+          var event;
+          try {
+            event=new KeyboardEvent(type,{key:'Enter',code:'Enter',keyCode:13,which:13,bubbles:true,cancelable:true});
+          } catch(e) {
+            event=document.createEvent('Event'); event.initEvent(type,true,true);
+            Object.defineProperty(event,'keyCode',{get:function(){return 13;}});
+            Object.defineProperty(event,'which',{get:function(){return 13;}});
+          }
+          target.dispatchEvent(event);
+          if(target!==document) document.dispatchEvent(new KeyboardEvent(type,{key:'Enter',code:'Enter',keyCode:13,which:13,bubbles:true,cancelable:true}));
+        }
+        function down(e){if(e)e.preventDefault();if(held)return;held=true;send('keydown');}
+        function up(e){if(e)e.preventDefault();if(!held)return;held=false;send('keyup');}
+        btn.addEventListener('pointerdown',down);
+        btn.addEventListener('pointerup',up);
+        btn.addEventListener('pointercancel',up);
+        btn.addEventListener('lostpointercapture',up);
+        btn.addEventListener('contextmenu',function(e){e.preventDefault();});
+        window.addEventListener('blur',up);
       }
-      target.dispatchEvent(event);
-      if(target!==document) document.dispatchEvent(new KeyboardEvent(type,{key:'Enter',code:'Enter',keyCode:13,which:13,bubbles:true,cancelable:true}));
-    }
-    function down(e){if(e)e.preventDefault();if(held)return;held=true;send('keydown');}
-    function up(e){if(e)e.preventDefault();if(!held)return;held=false;send('keyup');}
-    btn.addEventListener('pointerdown',down);
-    btn.addEventListener('pointerup',up);
-    btn.addEventListener('pointercancel',up);
-    btn.addEventListener('lostpointercapture',up);
-    btn.addEventListener('contextmenu',function(e){e.preventDefault();});
-    window.addEventListener('blur',up);
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',addStartButton);
-  else addStartButton();
-  setTimeout(addStartButton,1200);
-})();
-</script>
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',addStartButton);
+      else addStartButton();
+      setTimeout(addStartButton,1200);
+    })();
+    </script>
+
+    <script defer type="text/javascript" src="https://cdn.jsdelivr.net/gh/UGBONTOP/ugs-soniccd@main/js1/index.js"></script>
+
+    <style>
+    #touchStartEnter{min-width:68px;min-height:58px;border:2px solid rgba(255,255,255,.85);border-radius:16px;background:linear-gradient(180deg,#168bff,#0752c7);color:#fff;font:900 13px/1.1 Arial,sans-serif;box-shadow:0 4px 0 rgba(4,51,110,.9),0 0 18px rgba(22,139,255,.35);cursor:pointer;transition:transform .08s ease,box-shadow .08s ease;}
+    #touchStartEnter:active{transform:translateY(3px);box-shadow:0 1px 0 #063b86,0 0 18px #168bff99}
+    #touchStartEnter:focus-visible{outline:3px solid #fff;outline-offset:3px}
+    </style>
 
     <script>
     // Register the PWA service worker for installation and offline app-shell access.
