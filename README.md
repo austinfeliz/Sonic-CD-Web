@@ -2,7 +2,7 @@
 
 A web version of **Sonic CD**, originally made by Crush Arcade.
 
-**Play online:** https://hedgeplays2.github.io/Sonic-CD-Web/
+**Play online:** https://09ausfel.github.io/Sonic-CD-Web/
 
 ## Controls
 
